@@ -34,9 +34,10 @@ jobs:
 
       - name: Deploy to Elastic Beanstalk
         run: |
+          VERSION_LABEL="v$(date +%Y%m%d%H%M%S)"  # Example: v20250319173045
           aws elasticbeanstalk create-application-version --application-name personalwebsite-backend \
-            --version-label v${{ github.run_number }} \
+            --version-label "$VERSION_LABEL" \
             --source-bundle S3Bucket="personalwebsite-bucket",S3Key="personalwebsite-0.0.1-SNAPSHOT.jar"
 
           aws elasticbeanstalk update-environment --environment-name backend-env \
-            --version-label v${{ github.run_number }}
+            --version-label "$VERSION_LABEL"
