@@ -38,6 +38,7 @@ public class SecurityConfig {
                 .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable())) // Allow H2 console in iframes
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Use stateless sessions
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/", "/favicon.ico").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/admin/register").hasRole("ADMIN")
@@ -52,7 +53,11 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:5173")); // ✅ Match your frontend's URL
+        configuration.setAllowedOrigins(List.of(
+                "http://localhost:5173", // ✅ Match local frontend's URL
+                "https://personalwebsite-backend.us-east-1.elasticbeanstalk.com"
+        ));
+        configuration.setAllowedOrigins(List.of("http://localhost:5173"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true); // ✅ Required for JWT authentication
