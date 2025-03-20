@@ -9,6 +9,7 @@ import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,12 +32,14 @@ public class TestimonialRepositoryTest {
         testimonial1.setMessage("Great work on the project! The website is easy to use and very responsive.");
         testimonial1.setRole("Product Manager");
         testimonial1.setOrganization("Tech Corp");
+        testimonial1.setSubmittedAt(LocalDate.MAX);
 
         testimonial2 = new Testimonial();
         testimonial2.setName("Jane Smith");
         testimonial2.setMessage("Fantastic experience working with you! The implementation exceeded our expectations.");
         testimonial2.setRole("Lead Developer");
         testimonial2.setOrganization("Innovate Solutions");
+        testimonial2.setSubmittedAt(LocalDate.MAX);
     }
 
     @Test
