@@ -2,31 +2,31 @@ package com.jolaar.personalwebsite.common.util;
 
 import com.jolaar.personalwebsite.common.enums.ProficiencyLevel;
 import com.jolaar.personalwebsite.common.enums.SkillCategory;
-import com.jolaar.personalwebsite.model.Education;
-import com.jolaar.personalwebsite.model.Experience;
-import com.jolaar.personalwebsite.model.PersonalInfo;
-import com.jolaar.personalwebsite.model.Skill;
+import com.jolaar.personalwebsite.model.*;
 import com.jolaar.personalwebsite.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Component
 public class DataLoader implements CommandLineRunner {
 
     private final PersonalInfoRepository personalInfoRepository;
+    private final ProjectRepository projectRepository;
     private final ExperienceRepository experienceRepository;
     private final EducationRepository educationRepository;
     private final SkillRepository skillRepository;
     private final CertificationRepository certificationRepository;
     private final TestimonialRepository testimonialRepository;
 
-    public DataLoader(PersonalInfoRepository personalInfoRepository, ExperienceRepository experienceRepository,
+    public DataLoader(PersonalInfoRepository personalInfoRepository, ProjectRepository projectRepository, ExperienceRepository experienceRepository,
                       EducationRepository educationRepository, SkillRepository skillRepository, CertificationRepository certificationRepository,
                       TestimonialRepository testimonialRepository) {
         this.personalInfoRepository = personalInfoRepository;
+        this.projectRepository = projectRepository;
         this.experienceRepository = experienceRepository;
         this.educationRepository = educationRepository;
         this.skillRepository = skillRepository;
@@ -220,8 +220,68 @@ Communication Skills (Clear documentation, presentations, and team collaboration
 Leadership (Experience mentoring junior developers, leading small teams)
             * */
         }
+
+        // Add Projects
+        if (projectRepository.count() == 0) {
+            Project portfolioWebsite = new Project();
+            portfolioWebsite.setTitle("Personal Portfolio Website");
+            portfolioWebsite.setDescription("A personal portfolio website built with Java and Spring Boot to showcase skills, projects, and achievements.");
+            portfolioWebsite.setGithubLink("https://github.com/yourusername/portfolio-website");
+            portfolioWebsite.setLiveDemoLink("https://www.yourportfolio.com");
+            portfolioWebsite.setDateCreated(LocalDate.of(2024, 1, 15));
+
+            Project eCommercePlatform = new Project();
+            eCommercePlatform.setTitle("E-Commerce Platform");
+            eCommercePlatform.setDescription("An e-commerce platform with features such as product search, user authentication, and a shopping cart. Built using React, Node.js, and MongoDB.");
+            eCommercePlatform.setGithubLink("https://github.com/yourusername/ecommerce-platform");
+            eCommercePlatform.setLiveDemoLink("https://www.myecommerceplatform.com");
+            eCommercePlatform.setDateCreated(LocalDate.of(2023, 7, 5));
+
+            Project socialMediaApp = new Project();
+            socialMediaApp.setTitle("Social Media App");
+            socialMediaApp.setDescription("A social media app that allows users to share posts, like, comment, and follow other users. Developed using React Native and Firebase.");
+            socialMediaApp.setGithubLink("https://github.com/yourusername/social-media-app");
+            socialMediaApp.setLiveDemoLink("https://www.mysocialmediaapp.com");
+            socialMediaApp.setDateCreated(LocalDate.of(2023, 10, 22));
+
+            projectRepository.saveAll(List.of(portfolioWebsite, eCommercePlatform, socialMediaApp));
+        }
         // Add Certifications
+        if (certificationRepository.count() == 0) {
+            Certification awsDeveloperAssociate = Certification.builder()
+                    .certName("AWS Certified Developer - Associate")
+                    .issuingOrg("Amazon Web Services")
+                    .dateEarned(LocalDate.of(2023, 5, 20))  // Example date
+                    .certUrl("https://www.aws.com/certifications/developer-associate")
+                    .build();
+
+            Certification awsDevOps = Certification.builder()
+                    .certName("AWS Certified DevOps Engineer - Professional")
+                    .issuingOrg("Amazon Web Services")
+                    .dateEarned(LocalDate.of(2024, 2, 15))  // Example date
+                    .certUrl("https://www.aws.com/certifications/devops-engineer-professional")
+                    .build();
+
+            certificationRepository.saveAll(List.of(awsDeveloperAssociate, awsDevOps));
+        }
         // Add Testimonials
+        if (testimonialRepository.count() == 0) {
+            Testimonial testimonial1 = new Testimonial();
+            testimonial1.setName("John Doe");
+            testimonial1.setMessage("This service is fantastic! It helped us scale our platform quickly and efficiently. Highly recommend it.");
+            testimonial1.setRole("Senior Software Engineer");
+            testimonial1.setOrganization("Tech Innovators Inc.");
+            testimonial1.setSubmittedAt(LocalDateTime.of(2024, 3, 10, 14, 30, 0, 0));
+
+            Testimonial testimonial2 = new Testimonial();
+            testimonial2.setName("Jane Smith");
+            testimonial2.setMessage("The level of professionalism and technical expertise is second to none. A great experience working with this team.");
+            testimonial2.setRole("Product Manager");
+            testimonial2.setOrganization("Creative Solutions Ltd.");
+            testimonial2.setSubmittedAt(LocalDateTime.of(2024, 3, 15, 9, 45, 0, 0));
+
+            testimonialRepository.saveAll(List.of(testimonial1, testimonial2));
+        }
 
     }
 }
