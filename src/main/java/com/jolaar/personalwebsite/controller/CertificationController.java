@@ -1,7 +1,6 @@
 package com.jolaar.personalwebsite.controller;
 
 import com.jolaar.personalwebsite.dto.CertificationDTO;
-import com.jolaar.personalwebsite.model.Certification;
 import com.jolaar.personalwebsite.service.CertificationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

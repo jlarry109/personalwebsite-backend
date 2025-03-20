@@ -1,9 +1,6 @@
 package com.jolaar.personalwebsite.dto;
 
-import lombok.Data;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 

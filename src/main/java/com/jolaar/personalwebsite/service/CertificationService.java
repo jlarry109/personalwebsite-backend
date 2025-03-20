@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class CertificationService {
@@ -29,7 +28,7 @@ public class CertificationService {
         return certifications.stream()
                 .map(CertificationMapper.INSTANCE::toDTO)
                 .sorted(Comparator.comparing(CertificationDTO::getDateEarned).reversed())
-                .collect(Collectors.toUnmodifiableList());
+                .toList();
     }
 
     public CertificationDTO addCertification(CertificationDTO certificationDTO) {
