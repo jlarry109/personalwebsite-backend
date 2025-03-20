@@ -23,6 +23,8 @@ public class Certification {
     private LocalDate dateEarned;
     private String certUrl;
 
+    public Certification() {}
+
     public Certification(String certName, String issuingOrg, LocalDate dateEarned, String certUrl) {
         this.certName = certName;
         this.issuingOrg = issuingOrg;
