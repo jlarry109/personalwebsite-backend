@@ -22,7 +22,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -78,7 +78,7 @@ public class AdminControllerIntegrationTest {
     private ProjectDTO project;
     private SkillDTO skill;
     private TestimonialDTO testimonial;
-    private LocalDateTime currentDateTime;
+    private LocalDate currentDateTime;
     private CertificationDTO certification;
 
     @BeforeEach
@@ -160,7 +160,7 @@ public class AdminControllerIntegrationTest {
         skill.setSkillCategories(List.of(SkillCategory.PROGRAMMING_LANGUAGES));
 
         testimonial = new TestimonialDTO();
-        currentDateTime = LocalDateTime.now();
+        currentDateTime = LocalDate.now();
         testimonial.setName("John Doe");
         testimonial.setMessage("Great work on the project. I really appreciate the effort put in.");
         testimonial.setRole("Project Manager");

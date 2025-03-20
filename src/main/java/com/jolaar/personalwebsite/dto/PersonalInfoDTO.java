@@ -2,6 +2,8 @@ package com.jolaar.personalwebsite.dto;
 
 import lombok.Data;
 
+import java.util.Objects;
+
 @Data
 public class PersonalInfoDTO {
     private Long id;
@@ -87,6 +89,19 @@ public class PersonalInfoDTO {
 
     public void setWebsiteUrl(String websiteUrl) {
         this.websiteUrl = websiteUrl;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PersonalInfoDTO that = (PersonalInfoDTO) o;
+        return Objects.equals(id, that.id) && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(email, that.email) && Objects.equals(phone, that.phone) && Objects.equals(address, that.address) && Objects.equals(bio, that.bio) && Objects.equals(linkedinUrl, that.linkedinUrl) && Objects.equals(githubUrl, that.githubUrl) && Objects.equals(websiteUrl, that.websiteUrl);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, email, phone, address, bio, linkedinUrl, githubUrl, websiteUrl);
     }
 }
 

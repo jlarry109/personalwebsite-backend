@@ -1,6 +1,8 @@
 package com.jolaar.personalwebsite.dto;
 
 import lombok.Data;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -11,7 +13,7 @@ public class TestimonialDTO {
     private String message;
     private String role;
     private String organization;
-    private LocalDateTime submittedAt;
+    private LocalDate submittedAt;
 
     public Long getId() {
         return id;
@@ -53,11 +55,11 @@ public class TestimonialDTO {
         this.organization = organization;
     }
 
-    public LocalDateTime getSubmittedAt() {
+    public LocalDate getSubmittedAt() {
         return submittedAt;
     }
 
-    public void setSubmittedAt(LocalDateTime submittedAt) {
+    public void setSubmittedAt(LocalDate submittedAt) {
         this.submittedAt = submittedAt;
     }
 

@@ -15,6 +15,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
@@ -37,7 +38,7 @@ public class TestimonialServiceTest {
 
     @BeforeEach
     public void setUp(){
-        LocalDateTime currentDateTime = LocalDateTime.now();
+        LocalDate currentDateTime = LocalDate.now();
         testimonial1 = new TestimonialDTO();
         testimonial1.setName("John Doe");
         testimonial1.setMessage("Great work on the project. I really appreciate the effort put in.");
@@ -45,7 +46,7 @@ public class TestimonialServiceTest {
         testimonial1.setOrganization("Tech Solutions Inc.");
         testimonial1.setSubmittedAt(currentDateTime);
 
-        LocalDateTime maxDateTime = LocalDateTime.MAX;
+        LocalDate maxDateTime = LocalDate.MAX;
         testimonial2 = new TestimonialDTO();
         testimonial2.setName("Jane Smith");
         testimonial2.setMessage("Amazing teamwork and excellent results! Highly recommend.");

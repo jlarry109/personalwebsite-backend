@@ -3,6 +3,7 @@ package com.jolaar.personalwebsite.dto;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Data
 public class CertificationDTO {
@@ -50,5 +51,18 @@ public class CertificationDTO {
 
     public void setCertUrl(String certUrl) {
         this.certUrl = certUrl;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CertificationDTO that = (CertificationDTO) o;
+        return Objects.equals(id, that.id) && Objects.equals(certName, that.certName) && Objects.equals(issuingOrg, that.issuingOrg) && Objects.equals(dateEarned, that.dateEarned) && Objects.equals(certUrl, that.certUrl);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, certName, issuingOrg, dateEarned, certUrl);
     }
 }

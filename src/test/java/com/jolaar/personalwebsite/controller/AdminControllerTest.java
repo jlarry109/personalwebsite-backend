@@ -14,7 +14,6 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.mockito.Mockito.*;
@@ -106,7 +105,7 @@ public class AdminControllerTest {
         skill.setSkillName("Java Programming");
         skill.setProficiencyLevel(ProficiencyLevel.EXPERT);
 
-        LocalDateTime currentDateTime = LocalDateTime.now();
+        LocalDate currentDateTime = LocalDate.now();
         testimonial = new TestimonialDTO();
         testimonial.setName("John Doe");
         testimonial.setMessage("Great work on the project. I really appreciate the effort put in.");

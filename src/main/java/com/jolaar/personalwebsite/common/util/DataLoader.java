@@ -8,7 +8,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Component
@@ -248,19 +247,12 @@ Leadership (Experience mentoring junior developers, leading small teams)
         }
         // Add Certifications
         if (certificationRepository.count() == 0) {
-            Certification awsDeveloperAssociate = Certification.builder()
-                    .certName("AWS Certified Developer - Associate")
-                    .issuingOrg("Amazon Web Services")
-                    .dateEarned(LocalDate.of(2023, 5, 20))  // Example date
-                    .certUrl("https://www.aws.com/certifications/developer-associate")
-                    .build();
+            Certification awsDeveloperAssociate = new Certification("AWS Certified Developer - Associate", "Amazon Web Services",
+                    LocalDate.of(2023, 5, 20), "https://www.aws.com/certifications/developer-associate");
 
-            Certification awsDevOps = Certification.builder()
-                    .certName("AWS Certified DevOps Engineer - Professional")
-                    .issuingOrg("Amazon Web Services")
-                    .dateEarned(LocalDate.of(2024, 2, 15))  // Example date
-                    .certUrl("https://www.aws.com/certifications/devops-engineer-professional")
-                    .build();
+            Certification awsDevOps = new Certification("AWS Certified DevOps Engineer - Professional",
+                    "Amazon Web Services", LocalDate.of(2024, 2, 15),
+                    "https://www.aws.com/certifications/devops-engineer-professional");
 
             certificationRepository.saveAll(List.of(awsDeveloperAssociate, awsDevOps));
         }
@@ -271,14 +263,14 @@ Leadership (Experience mentoring junior developers, leading small teams)
             testimonial1.setMessage("This service is fantastic! It helped us scale our platform quickly and efficiently. Highly recommend it.");
             testimonial1.setRole("Senior Software Engineer");
             testimonial1.setOrganization("Tech Innovators Inc.");
-            testimonial1.setSubmittedAt(LocalDateTime.of(2024, 3, 10, 14, 30, 0, 0));
+            testimonial1.setSubmittedAt(LocalDate.of(2024, 3, 10));
 
             Testimonial testimonial2 = new Testimonial();
             testimonial2.setName("Jane Smith");
             testimonial2.setMessage("The level of professionalism and technical expertise is second to none. A great experience working with this team.");
             testimonial2.setRole("Product Manager");
             testimonial2.setOrganization("Creative Solutions Ltd.");
-            testimonial2.setSubmittedAt(LocalDateTime.of(2024, 3, 15, 9, 45, 0, 0));
+            testimonial2.setSubmittedAt(LocalDate.of(2024, 3, 15));
 
             testimonialRepository.saveAll(List.of(testimonial1, testimonial2));
         }

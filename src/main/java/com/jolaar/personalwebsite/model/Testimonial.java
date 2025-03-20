@@ -8,6 +8,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -27,7 +28,7 @@ public class Testimonial {
     private String organization;
 
     @Column(nullable = false, updatable = false)
-    private LocalDateTime submittedAt = LocalDateTime.now();
+    private LocalDate submittedAt;
 
     public Long getId() {
         return id;
@@ -69,11 +70,11 @@ public class Testimonial {
         this.organization = organization;
     }
 
-    public LocalDateTime getSubmittedAt() {
+    public LocalDate getSubmittedAt() {
         return submittedAt;
     }
 
-    public void setSubmittedAt(LocalDateTime submittedAt) {
+    public void setSubmittedAt(LocalDate submittedAt) {
         this.submittedAt = submittedAt;
     }
 }

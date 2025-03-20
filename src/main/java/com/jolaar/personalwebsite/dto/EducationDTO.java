@@ -3,6 +3,8 @@ package com.jolaar.personalwebsite.dto;
 
 import lombok.Data;
 
+import java.util.Objects;
+
 @Data
 public class EducationDTO {
     private Long id;
@@ -49,6 +51,19 @@ public class EducationDTO {
 
     public void setEndYear(Integer endYear) {
         this.endYear = endYear;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EducationDTO that = (EducationDTO) o;
+        return Objects.equals(id, that.id) && Objects.equals(schoolName, that.schoolName) && Objects.equals(degree, that.degree) && Objects.equals(startYear, that.startYear) && Objects.equals(endYear, that.endYear);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, schoolName, degree, startYear, endYear);
     }
 }
 

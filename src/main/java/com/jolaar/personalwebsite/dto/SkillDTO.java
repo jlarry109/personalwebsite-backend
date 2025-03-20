@@ -5,6 +5,7 @@ import com.jolaar.personalwebsite.common.enums.SkillCategory;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Objects;
 
 @Data
 public class SkillDTO {
@@ -43,5 +44,18 @@ public class SkillDTO {
 
     public void setSkillCategories(List<SkillCategory> skillCategories) {
         this.skillCategories = skillCategories.stream().toList();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SkillDTO skillDTO = (SkillDTO) o;
+        return Objects.equals(id, skillDTO.id) && Objects.equals(skillName, skillDTO.skillName) && proficiencyLevel == skillDTO.proficiencyLevel && Objects.equals(skillCategories, skillDTO.skillCategories);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, skillName, proficiencyLevel, skillCategories);
     }
 }

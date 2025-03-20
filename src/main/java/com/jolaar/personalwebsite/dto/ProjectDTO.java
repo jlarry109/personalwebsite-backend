@@ -4,6 +4,7 @@ package com.jolaar.personalwebsite.dto;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Data
 public class ProjectDTO {
@@ -60,5 +61,18 @@ public class ProjectDTO {
 
     public void setDateCreated(LocalDate dateCreated) {
         this.dateCreated = dateCreated;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProjectDTO that = (ProjectDTO) o;
+        return Objects.equals(id, that.id) && Objects.equals(title, that.title) && Objects.equals(description, that.description) && Objects.equals(githubLink, that.githubLink) && Objects.equals(liveDemoLink, that.liveDemoLink) && Objects.equals(dateCreated, that.dateCreated);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, description, githubLink, liveDemoLink, dateCreated);
     }
 }
