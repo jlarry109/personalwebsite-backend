@@ -55,11 +55,10 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of(
                 "me.joneslarry.com",
-                "http://personalwebsite-frontend.us-east-1.elasticbeanstalk.com",
+                "http://personalwebsite-frontend.us-east-1.elasticbeanstalk.com", // Match prod frontend's URL
                 "http://localhost:5173", // ✅ Match local frontend's URL
                 "https://personalwebsite-backend.us-east-1.elasticbeanstalk.com"
         ));
-        configuration.setAllowedOrigins(List.of("http://localhost:5173"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true); // ✅ Required for JWT authentication
