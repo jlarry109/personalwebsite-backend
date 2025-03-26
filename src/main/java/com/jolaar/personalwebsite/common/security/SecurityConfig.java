@@ -54,6 +54,8 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of(
+                "me.joneslarry.com",
+                "http://personalwebsite-frontend.us-east-1.elasticbeanstalk.com",
                 "http://localhost:5173", // ✅ Match local frontend's URL
                 "https://personalwebsite-backend.us-east-1.elasticbeanstalk.com"
         ));
