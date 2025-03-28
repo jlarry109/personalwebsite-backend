@@ -1,6 +1,7 @@
 package com.jolaar.personalwebsite.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -13,6 +14,7 @@ public class ProjectDTO {
     private String description;
     private String githubLink;
     private String liveDemoLink;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateCreated;
 
     public Long getId() {

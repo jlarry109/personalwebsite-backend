@@ -1,5 +1,6 @@
 package com.jolaar.personalwebsite.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -10,6 +11,7 @@ public class CertificationDTO {
     private Long id;
     private String certName;
     private String issuingOrg;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateEarned;
     private String certUrl;
 

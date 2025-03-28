@@ -1,5 +1,6 @@
 package com.jolaar.personalwebsite.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,6 +26,7 @@ public class Project {
 
     private String githubLink;
     private String liveDemoLink;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateCreated;
 
     public Long getId() {

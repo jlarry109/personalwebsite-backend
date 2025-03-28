@@ -1,5 +1,6 @@
 package com.jolaar.personalwebsite.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -11,7 +12,9 @@ public record ExperienceDTO(
         Long id,
         String companyName,
         String position,
+        @JsonFormat(pattern = "yyyy-MM-dd")
         LocalDate startDate,
+        @JsonFormat(pattern = "yyyy-MM-dd")
         LocalDate endDate,
         String description,
         List<ExperienceDetailDTO> details // Nested DTO to avoid exposing entity relationships

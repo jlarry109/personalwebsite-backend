@@ -1,5 +1,6 @@
 package com.jolaar.personalwebsite.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,6 +21,7 @@ public class Certification {
 
     private String certName;
     private String issuingOrg;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateEarned;
     private String certUrl;
 

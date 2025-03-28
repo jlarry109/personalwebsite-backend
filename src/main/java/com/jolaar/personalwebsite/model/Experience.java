@@ -2,6 +2,7 @@ package com.jolaar.personalwebsite.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,7 +26,9 @@ public class Experience {
 
     private String companyName;
     private String position;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
     @Column(columnDefinition = "TEXT")

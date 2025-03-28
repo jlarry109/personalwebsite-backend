@@ -1,5 +1,7 @@
 package com.jolaar.personalwebsite.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -10,6 +12,7 @@ public class TestimonialDTO {
     private String message;
     private String role;
     private String organization;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate submittedAt;
 
     public Long getId() {
