@@ -33,7 +33,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .requiresChannel(channel -> channel
-                        .requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
+                        .requestMatchers(r -> "https".equalsIgnoreCase(r.getHeader("X-Forwarded-Proto")))
                         .requiresSecure()
                 ) // enforce https on non-forwarded requests. i.e trust forwarded requests
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
@@ -41,6 +41,7 @@ public class SecurityConfig {
                 .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable())) // Allow H2 console in iframes
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Use stateless sessions
                 .authorizeHttpRequests(auth -> auth
+                        //.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/", "/favicon.ico").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
@@ -64,6 +65,7 @@ public class SecurityConfig {
                 //"https://personalwebsite-backend.us-east-1.elasticbeanstalk.com"
         ));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        // configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true); // Required for JWT authentication
 
