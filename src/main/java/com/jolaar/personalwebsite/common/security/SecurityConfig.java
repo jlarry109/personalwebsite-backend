@@ -33,8 +33,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .requiresChannel(channel -> channel
-                        .anyRequest().requiresSecure()
-                ) // enforce https
+                        .requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
+                        .requiresSecure()
+                ) // enforce https on non-forwarded requests. i.e trust forwarded requests
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(csrf -> csrf.disable()) // Disable CSRF for API requests
                 .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable())) // Allow H2 console in iframes
