@@ -11,7 +11,6 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.CascadeType;
-import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;

@@ -1,11 +1,8 @@
 package com.jolaar.personalwebsite.service;
 
 import com.jolaar.personalwebsite.common.exception.ResourceNotFoundException;
-import com.jolaar.personalwebsite.dto.SkillDTO;
 import com.jolaar.personalwebsite.dto.TestimonialDTO;
-import com.jolaar.personalwebsite.mapper.SkillMapper;
 import com.jolaar.personalwebsite.mapper.TestimonialMapper;
-import com.jolaar.personalwebsite.model.Skill;
 import com.jolaar.personalwebsite.model.Testimonial;
 import com.jolaar.personalwebsite.repository.TestimonialRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +13,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;

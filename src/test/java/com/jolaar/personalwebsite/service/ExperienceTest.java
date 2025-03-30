@@ -159,7 +159,6 @@ public class ExperienceTest {
 
         experienceService.deleteExperience(1L);
 
-        // Assert: Verify the expected behavior
         verify(experienceRepository, times(1)).existsById(1L);
         verify(experienceRepository, times(1)).deleteById(1L);
     }

@@ -1,6 +1,5 @@
 package com.jolaar.personalwebsite.repository;
 
-import com.jolaar.personalwebsite.model.Skill;
 import com.jolaar.personalwebsite.model.Testimonial;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

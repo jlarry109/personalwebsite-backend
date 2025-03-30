@@ -4,7 +4,6 @@ import com.jolaar.personalwebsite.common.exception.ResourceNotFoundException;
 import com.jolaar.personalwebsite.dto.ExperienceDTO;
 import com.jolaar.personalwebsite.mapper.ExperienceMapper;
 import com.jolaar.personalwebsite.model.Experience;
-import com.jolaar.personalwebsite.model.ExperienceDetail;
 import com.jolaar.personalwebsite.repository.ExperienceRepository;
 import org.springframework.stereotype.Service;
 
@@ -47,13 +46,6 @@ public class ExperienceService {
         Experience updatedExperience = experienceRepository.save(existingExperience);
         return ExperienceMapper.INSTANCE.toDTO(updatedExperience);
     }
-
-
-//    public List<ExperienceDTO> getAllExperiences() {
-//        return experienceRepository.findAll().stream()
-//                .map(ExperienceMapper.INSTANCE::toDTO)
-//                .toList();
-//    }
 
     public ExperienceDTO addExperience(ExperienceDTO experienceDTO) {
         Experience experience = ExperienceMapper.INSTANCE.toEntity(experienceDTO);

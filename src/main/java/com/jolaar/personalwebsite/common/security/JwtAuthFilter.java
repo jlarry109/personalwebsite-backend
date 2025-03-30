@@ -42,9 +42,9 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         String username = null;
 
         try {
-            // ✅ First, validate the token
+            // First, validate the token
             if (jwtUtil.validateToken(token)) {
-                // ✅ Then, extract the username
+                // Then, extract the username
                 username = jwtUtil.extractUsername(token);
             }
         } catch (ExpiredJwtException | MalformedJwtException | UnsupportedJwtException | SignatureException | IllegalArgumentException e) {

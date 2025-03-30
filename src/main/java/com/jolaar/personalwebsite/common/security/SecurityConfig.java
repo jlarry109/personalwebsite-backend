@@ -11,7 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -33,6 +32,9 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .requiresChannel(channel -> channel
+                        .anyRequest().requiresSecure()
+                ) // enforce https
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(csrf -> csrf.disable()) // Disable CSRF for API requests
                 .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable())) // Allow H2 console in iframes
@@ -56,17 +58,16 @@ public class SecurityConfig {
         configuration.setAllowedOrigins(List.of(
                 "https://www.joneslarry.com",
                 "https://joneslarry.com",
-                "http://me.joneslarry.com",
-                "http://personalwebsite-frontend.us-east-1.elasticbeanstalk.com", // Match prod frontend's URL
-                "http://localhost:5173", // ✅ Match local frontend's URL
-                "https://personalwebsite-backend.us-east-1.elasticbeanstalk.com"
+                //"http://personalwebsite-frontend.us-east-1.elasticbeanstalk.com", // Match prod frontend's URL
+                "http://localhost:5173" // Match local frontend's URL
+                //"https://personalwebsite-backend.us-east-1.elasticbeanstalk.com"
         ));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
-        configuration.setAllowCredentials(true); // ✅ Required for JWT authentication
+        configuration.setAllowCredentials(true); // Required for JWT authentication
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration); // ✅ Apply to all API routes
+        source.registerCorsConfiguration("/**", configuration); // Apply to all API routes
         return source;
     }
 

@@ -39,7 +39,7 @@ public class AdminControllerIntegrationTest {
     private MockMvc mockMvc;
 
     @Mock
-    private AdminService adminService;  // Mocked service for AdminService
+    private AdminService adminService;
 
     @Mock
     private CertificationService certificationService;

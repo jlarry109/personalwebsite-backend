@@ -36,7 +36,7 @@ public class JwtUtil {
                 .subject(username)
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + jwtExpiration))
-                .signWith(key) // ✅ Use both `key` and `algorithm`
+                .signWith(key) // Use both `key` and `algorithm`
                 .compact();
     }
 
@@ -57,7 +57,7 @@ public class JwtUtil {
 
     private Claims parseClaims(String token) {
         return Jwts.parser()
-                .verifyWith(secret)  // ✅ Use `verifyWith(key)`
+                .verifyWith(secret)  // Use `verifyWith(key)`
                 .build()
                 .parseSignedClaims(token)
                 .getPayload();

@@ -1,7 +1,6 @@
 package com.jolaar.personalwebsite.controller;
 
 import com.jolaar.personalwebsite.dto.PersonalInfoDTO;
-import com.jolaar.personalwebsite.model.PersonalInfo;
 import com.jolaar.personalwebsite.service.PersonalInfoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
