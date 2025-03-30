@@ -22,6 +22,13 @@ jobs:
       - name: Build JAR File
         run: mvn clean package -DskipTests
 
+      - name: Create Deployment ZIP
+        run: |
+          mkdir -p deploy
+          cp target/personalwebsite-0.0.1-SNAPSHOT.jar deploy/application.jar
+          cp -r .platform deploy/
+          cd deploy && zip -r ../deploy.zip . && cd ..
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -29,15 +36,15 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Upload JAR to S3
-        run: aws s3 cp target/personalwebsite-0.0.1-SNAPSHOT.jar s3://personalwebsite-bucket/
+      - name: Upload ZIP to S3
+        run: aws s3 cp deploy.zip s3://personalwebsite-bucket/
 
       - name: Deploy to Elastic Beanstalk
         run: |
-          VERSION_LABEL="v$(date +%Y%m%d%H%M%S)"  # Example: v20250319173045
+          VERSION_LABEL="v$(date +%Y%m%d%H%M%S)"
           aws elasticbeanstalk create-application-version --application-name personalwebsite-backend \
             --version-label "$VERSION_LABEL" \
-            --source-bundle S3Bucket="personalwebsite-bucket",S3Key="personalwebsite-0.0.1-SNAPSHOT.jar"
+            --source-bundle S3Bucket="personalwebsite-bucket",S3Key="deploy.zip"
 
           aws elasticbeanstalk update-environment --environment-name personalwebsite-backend-env \
             --version-label "$VERSION_LABEL"
