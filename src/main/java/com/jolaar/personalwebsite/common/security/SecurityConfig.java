@@ -32,6 +32,9 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+//                .requiresChannel(channel -> channel
+//                        .anyRequest().requiresSecure()
+//                )
                 .requiresChannel(channel -> channel
                         .requestMatchers(r -> "https".equalsIgnoreCase(r.getHeader("X-Forwarded-Proto")))
                         .requiresSecure()
