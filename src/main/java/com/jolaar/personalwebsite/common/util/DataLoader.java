@@ -77,15 +77,15 @@ public class DataLoader implements CommandLineRunner {
 //        Add Experience
         if (experienceRepository.count() == 0) { // Prevent duplicate inserts
             Experience experience1 = new Experience();
-            experience1.setCompanyName("TechCorp");
-            experience1.setPosition("Software Engineer");
+            experience1.setCompanyName("Microsoft.Inc");
+            experience1.setPosition("Systems Engineer");
             experience1.setStartDate(LocalDate.of(2019, 6, 1));
             experience1.setEndDate(LocalDate.of(2022, 12, 31));
             experience1.setDescription("Developed and maintained web applications using Java and Spring Boot.");
 
             Experience experience2 = new Experience();
-            experience2.setCompanyName("InnovateSoft");
-            experience2.setPosition("Software Engineer");
+            experience2.setCompanyName("Apple.Inc");
+            experience2.setPosition("Machine Learning Engineer");
             experience2.setStartDate(LocalDate.of(2023, 1, 1));
             experience2.setEndDate(LocalDate.now()); // Currently employed
             experience2.setDescription("Leading a team of developers and working on scalable microservices architecture.");
