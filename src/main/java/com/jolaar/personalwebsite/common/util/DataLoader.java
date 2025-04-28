@@ -80,17 +80,25 @@ public class DataLoader implements CommandLineRunner {
             experience1.setCompanyName("Microsoft.Inc");
             experience1.setPosition("Systems Engineer");
             experience1.setStartDate(LocalDate.of(2019, 6, 1));
-            experience1.setEndDate(LocalDate.of(2022, 12, 31));
+            experience1.setEndDate(LocalDate.of(2021, 12, 31));
             experience1.setDescription("Developed and maintained web applications using Java and Spring Boot.");
 
             Experience experience2 = new Experience();
             experience2.setCompanyName("Apple.Inc");
             experience2.setPosition("Machine Learning Engineer");
-            experience2.setStartDate(LocalDate.of(2023, 1, 1));
+            experience2.setStartDate(LocalDate.of(2022, 1, 10));
+            experience2.setEndDate(LocalDate.of(2025, 4, 30)); // Currently employed
+            experience2.setDescription("Leading a team of developers and working on scalable microservices architecture.");
+
+            Experience experience3 = new Experience();
+            experience2.setCompanyName("Amazon AGI.Inc");
+            experience2.setPosition("Applied Scientist");
+            experience2.setStartDate(LocalDate.of(2025, 5, 27));
             experience2.setEndDate(LocalDate.now()); // Currently employed
             experience2.setDescription("Leading a team of developers and working on scalable microservices architecture.");
 
-            experienceRepository.saveAll(List.of(experience1, experience2));
+
+            experienceRepository.saveAll(List.of(experience1, experience2, experience3));
         }
 
         // Add Skills
