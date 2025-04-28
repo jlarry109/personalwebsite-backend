@@ -87,13 +87,13 @@ public class DataLoader implements CommandLineRunner {
             experience2.setCompanyName("Apple.Inc");
             experience2.setPosition("Machine Learning Engineer");
             experience2.setStartDate(LocalDate.of(2022, 1, 10));
-            experience2.setEndDate(LocalDate.of(2025, 4, 30));
+            experience2.setEndDate(LocalDate.of(2025, 4, 26));
             experience2.setDescription("Leading a team of developers and working on scalable microservices architecture.");
 
             Experience experience3 = new Experience();
-            experience3.setCompanyName("Amazon AGI.Inc");
+            experience3.setCompanyName("Amazon Artificial General Intelligence");
             experience3.setPosition("Applied Scientist");
-            experience3.setStartDate(LocalDate.of(2025, 5, 27));
+            experience3.setStartDate(LocalDate.of(2025, 4, 27));
             experience3.setEndDate(LocalDate.now()); // Currently employed
             experience3.setDescription("Leading a team of developers and working on scalable microservices architecture.");
 
