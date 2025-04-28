@@ -63,6 +63,7 @@ public class SecurityConfig {
         configuration.setAllowedOrigins(List.of(
                 "https://www.joneslarry.com",
                 "https://joneslarry.com",
+                "http://www.joneslarry.com",
                 //"http://personalwebsite-frontend.us-east-1.elasticbeanstalk.com", // Match prod frontend's URL
                 "http://localhost:5173" // Match local frontend's URL
                 //"https://personalwebsite-backend.us-east-1.elasticbeanstalk.com"
